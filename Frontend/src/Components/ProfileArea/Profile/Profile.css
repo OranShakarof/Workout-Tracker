@@ -1,0 +1,10 @@
+.Profile {
+    display: table;
+    margin: auto;
+    padding: 20px;
+}
+
+.Profile .paragraph{
+    display: block;
+    padding: 5px;
+}

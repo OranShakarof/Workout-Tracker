@@ -1,0 +1,25 @@
+.Login {
+  text-align: left;
+  width: 400px;
+  margin: 50px auto;
+  padding: 10px;
+  background-color: transparent;
+  border-radius: 10px;
+  box-shadow: 5px 6px 6px;
+}
+
+.Login .HeaderBox {
+  display: flex;
+  justify-content: center;
+}
+
+.Login .MyInvalidColor {
+  color: red;
+  font-size: 0.9rem;
+  margin-bottom: 0;
+  margin-left: 2px;
+}
+
+.Login .register:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,60 @@
+.EditProfile .Box {
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  width: 65vh;
+  margin: auto;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 5px 6px 6px;
+}
+
+.EditProfile .image-input-container {
+  position: relative;
+  display: inline-block;
+}
+/* Style for the background image */
+.EditProfile .image-input-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Style for the file input */
+.EditProfile .image-input-container input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* Style for the "Change Image" text */
+.EditProfile .image-input-container label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.EditProfile .myInvalidColor {
+  color: red;
+  font-size: 0.9rem;
+  margin-bottom: 0;
+  margin-left: 2px;
+}
+
+.EditProfile .cancelStyle {
+  text-decoration: none;
+  color: black;
+}
