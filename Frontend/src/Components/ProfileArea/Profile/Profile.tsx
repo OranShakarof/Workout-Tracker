@@ -19,6 +19,7 @@ import notifyService from "../../../Services/NotifyService";
 import profileService from "../../../Services/ProfileService";
 import "./Profile.css";
 import { useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function Profile(): JSX.Element {
   const user = authStore.getState()?.user;
@@ -26,10 +27,9 @@ function Profile(): JSX.Element {
   const [profile, setProfile] = useState<ProfileModel>();
 
   useEffect(() => {
-    profileService
-      .getProfileByUser(user._id)
-      .then((profile) => setProfile(profile))
-      .catch((err) => notifyService.error(err));
+    profileService.getProfileByUser(user._id)
+    .then((profile) => setProfile(profile))
+    .catch((err) => notifyService.error(err));
   }, [user._id]);
 
   function handleEditClick() {
@@ -66,7 +66,7 @@ function Profile(): JSX.Element {
           <Typography level="body-sm" sx={{ maxWidth: "24ch" }}>
             <Typography className="paragraph">Height: {profile?.height}cm</Typography>
             <Typography className="paragraph">Weight: {profile?.weight}kg</Typography>
-            <Typography className="paragraph">Fat percentage: {profile?.fatPercentage}%</Typography>
+            <Typography className="paragraph">Fat percentage: {profile?.fatPercentage ? `${profile.fatPercentage}%` : "-"}</Typography>
             <Typography className="paragraph" sx={{fontWeight: 700}}>Goal: {profile?.weightGoal}kg</Typography>
           </Typography>
           <Box
@@ -84,7 +84,7 @@ function Profile(): JSX.Element {
             </IconButton>
             <IconButton size="sm" variant="plain" color="neutral">
                 <Tooltip title="Workouts">
-                    <SportsMartialArtsIcon/>
+                    <NavLink to={"/workouts"}><SportsMartialArtsIcon sx={{color: "dimgray"}}/> </NavLink>
                 </Tooltip>
             </IconButton>
           </Box>

@@ -5,7 +5,7 @@ import { UploadedFile } from "express-fileupload";
 export interface IWeeklyProgressModel extends Document {
     weight: number,
     fatPercentage: number;
-    dateAndTime: string;
+    date: string;
     comments: string;
     image: UploadedFile;
     imageName: string;
@@ -28,11 +28,11 @@ export const WeeklyProgressSchema = new Schema<IWeeklyProgressModel>({
         max: [60, "Fat % can't be higher then 60."],
         trim: true,
     },
-    dateAndTime: {
+    date: {
         type: String,
-        required: [true, "Missing date and time."],
-        minlength: [10, "Date and time can't be lower than 10 chars"],
-        maxlength: [100, "Date and time can't be over 100 chars"],
+        required: [true, "Missing date."],
+        minlength: [10, "Date can't be lower than 10 chars"],
+        maxlength: [100, "Date can't be over 100 chars"],
         trim: true,
     },
     comments: {

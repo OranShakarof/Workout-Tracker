@@ -1,0 +1,28 @@
+.AddWorkout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 55vh;
+}
+
+.Box {
+  width: 80%;
+  max-width: 650px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.AddWorkout .title {
+  text-align: center;
+  font-family: "Trocchi", serif;
+  font-size: 32px;
+  font-weight: normal;
+  line-height: 40px;
+  margin: 0;
+}
+
+.AddWorkout .button-style{
+    text-transform: none;
+}

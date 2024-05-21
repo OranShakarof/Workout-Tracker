@@ -19,7 +19,7 @@ function Register(): JSX.Element {
         try{
             await authService.register(user);
             notifyService.success("You have been registered successfully!");
-            navigate("/create-profile");
+            navigate("/profile/new");
         }
         catch(err: any){
             notifyService.error(err);

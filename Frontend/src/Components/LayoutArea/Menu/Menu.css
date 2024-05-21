@@ -15,6 +15,10 @@
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
+.pages-style.active {
+    background-position: 0; 
+}
+
 .pages-style:before {
   content: "";
   background: #54b3d6;
@@ -33,4 +37,12 @@
 
 .pages-style:hover::before {
   width: 100%;
+}
+
+.add-style{
+    color: white;
+}
+
+.add-style:hover{
+    color: #54b3d6;
 }

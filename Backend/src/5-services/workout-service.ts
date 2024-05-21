@@ -7,6 +7,13 @@ async function getWorkoutsByUser(userId: string): Promise<IWorkoutModel[]> {
     return workouts;
 }
 
+async function getOneWorkoutByUser(_id: string): Promise<IWorkoutModel | null> {
+    const workout = await WorkoutModel.findOne({ _id: _id }).exec();
+    if (!workout) throw new ResourceNotFoundError(_id);
+    return workout;
+}
+
+
 async function addWorkout(workout: IWorkoutModel): Promise<IWorkoutModel> {
     
     // Validate: 
@@ -44,6 +51,7 @@ async function deleteWorkout(_id: string): Promise<void> {
 
 export default {
     getWorkoutsByUser,
+    getOneWorkoutByUser,
     addWorkout,
     editWorkout,
     deleteWorkout

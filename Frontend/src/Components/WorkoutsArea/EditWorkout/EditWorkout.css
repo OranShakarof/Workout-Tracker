@@ -1,0 +1,28 @@
+.EditWorkout {
+  margin-top: 10px;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 55vh;
+}
+
+.EditWorkout .Box {
+    max-width: 650px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.EditWorkout .title {
+    text-align: center;
+    font-family: "Trocchi", serif;
+    font-size: 32px;
+    font-weight: normal;
+    line-height: 40px;
+    margin: 0;
+}
+
+.EditWorkout .button-style{
+    text-transform: none;
+}

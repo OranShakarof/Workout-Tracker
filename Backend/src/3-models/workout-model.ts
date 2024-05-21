@@ -1,24 +1,44 @@
-import mongoose, { Document, ObjectId, Schema, model } from "mongoose";
+import mongoose, { Document, Schema } from 'mongoose';
 
 // 1. Interface:
-export interface IExerciseModel {
-    exercise: string;
-    sets: number;
+export interface ISet {
     reps: number;
     weight: number;
-    restPeriods: string;
-    isPR: boolean;
+}
+
+export interface IExerciseModel {
+    exercise: string;
+    sets: ISet[];
+    restPeriods?: string;
+    isPR?: boolean;
 }
 
 export interface IWorkoutModel extends Document {
     workoutName: string;
     exercises: IExerciseModel[];
-    dateAndTime: string;
-    userId: ObjectId;
+    date: string;
+    userId: mongoose.Types.ObjectId;
 }
 
 // 2. Schema:
-export const ExerciseSchema = new Schema<IExerciseModel>({
+const SetSchema = new Schema<ISet>({
+    reps: {
+        type: Number,
+        required: [true, "Missing reps."],
+        min: [1, "Reps can't be lower than 1."],
+        max: [250, "Reps can't be over 250."],
+        trim: true,
+    },
+    weight: {
+        type: Number,
+        required: [true, "Missing weight."],
+        min: [0, "Weight can't be lower than 0."],
+        max: [500, "Reps can't be over 500."],
+        trim: true,
+    }
+});
+
+const ExerciseSchema = new Schema<IExerciseModel>({
     exercise: {
         type: String,
         required: [true, "Missing Exercise."],
@@ -27,25 +47,8 @@ export const ExerciseSchema = new Schema<IExerciseModel>({
         trim: true,
     },
     sets: {
-        type: Number,
+        type: [SetSchema],
         required: [true, "Missing Sets."],
-        min: [1, "Sets can't be lower than 1."],
-        max: [15, "Sets can't be over 15."],
-        trim: true,
-    },
-    reps: {
-        type: Number,
-        required: [true, "Missing Reps."],
-        min: [1, "Reps can't be lower than 1."],
-        max: [250, "Reps can't be over 250."],
-        trim: true,
-    },
-    weight: {
-        type: Number,
-        required: [true, "Missing Weight."],
-        min: [0, "Weight can't be lower than 0."],
-        max: [500, "Reps can't be over 500."],
-        trim: true,
     },
     restPeriods: {
         type: String,
@@ -58,7 +61,7 @@ export const ExerciseSchema = new Schema<IExerciseModel>({
     },
 });
 
-export const WorkoutSchema = new Schema<IWorkoutModel>({
+const WorkoutSchema = new Schema<IWorkoutModel>({
     workoutName: {
         type: String,
         required: [true, "Missing Workout name."],
@@ -71,11 +74,9 @@ export const WorkoutSchema = new Schema<IWorkoutModel>({
         type: [ExerciseSchema],
         required: [true, "Missing Exercises."],
     },
-    dateAndTime: {
+    date: {
         type: String,
         required: [true, "Missing date and time."],
-        minlength: [10, "Date and time can't be lower than 10 chars"],
-        maxlength: [100, "Date and time can't be over 100 chars"],
         trim: true,
     },
     userId: {
@@ -85,5 +86,7 @@ export const WorkoutSchema = new Schema<IWorkoutModel>({
     versionKey: false,
 });
 
+WorkoutSchema.index({ date: 1, userId: 1 }, { unique: true, collation: { locale: 'en', strength: 2 } });
+
 // 3. Model:
-export const WorkoutModel = model<IWorkoutModel>("WorkoutModel", WorkoutSchema, "workouts");
+export const WorkoutModel = mongoose.model<IWorkoutModel>("WorkoutModel", WorkoutSchema, "workouts");

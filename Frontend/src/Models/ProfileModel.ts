@@ -4,7 +4,7 @@ class ProfileModel {
     public weight: number;
     public weightGoal: number;
     public fatPercentage: number;
-    public userId: number;
+    public userId: string;
     public imageUrl: string;
     public image: File;
 }

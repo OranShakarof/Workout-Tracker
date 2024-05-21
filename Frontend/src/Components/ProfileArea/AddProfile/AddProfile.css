@@ -1,3 +1,76 @@
-.AddProfile {
-	
+.AddProfile .Box {
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  width: 69vh;
+  margin: auto;
+  margin-top: 3vh;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 5px 6px 6px;
 }
+
+.AddProfile .title {
+  font-family: "Trocchi", serif;
+  font-size: 32px;
+  font-weight: normal;
+  line-height: 40px;
+  margin: 0;
+}
+
+.AddProfile .image-input-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+/* Style for the background image */
+.AddProfile .image-input-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Style for the file input */
+.AddProfile .image-input-container input[type="file"] {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Center the input relative to its container */
+  width: 100px;
+  height: 100px;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* Style for the "Change Image" text */
+.AddProfile .image-input-container label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.AddProfile .myInvalidColor {
+  color: red;
+  font-size: 0.9rem;
+  margin-bottom: 0;
+  margin-left: 2px;
+}
+
+.AddProfile .cancelStyle {
+  text-decoration: none;
+  color: black;
+}
+

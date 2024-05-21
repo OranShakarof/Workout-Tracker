@@ -78,6 +78,7 @@ function EditProfile(): JSX.Element {
                   label="Height (cm)"
                   defaultValue={" "}
                   inputProps={{ max: 250, min: 80 }}
+                  InputLabelProps={{ shrink: true }}
                   {...register("height", {
                     required: "* Height is required!",
                     min: {
@@ -101,6 +102,7 @@ function EditProfile(): JSX.Element {
                   label="Weight (kg)"
                   defaultValue={" "}
                   inputProps={{ max: 450, min: 30 }}
+                  InputLabelProps={{ shrink: true }}
                   {...register("weight", {
                     required: "* Weight is required!",
                     min: {
@@ -128,8 +130,6 @@ function EditProfile(): JSX.Element {
                         label="Fat %"
                         defaultValue={0}
                         {...register("fatPercentage",{
-                            
-                            required: "* Fat Percentage is required!",
                             min:{
                                 value: 1,
                                 message: "* Fat Percentage can't be Lower than 1%!"
@@ -151,6 +151,7 @@ function EditProfile(): JSX.Element {
                   label="Weight goal (kg)"
                   defaultValue={" "}
                   inputProps={{ max: 350, min: 40 }}
+                  InputLabelProps={{ shrink: true }}
                   {...register("weightGoal", {
                     required: "* weight goal is required!",
                     min: {

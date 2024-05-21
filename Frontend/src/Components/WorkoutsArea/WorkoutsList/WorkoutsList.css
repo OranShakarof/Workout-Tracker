@@ -1,0 +1,35 @@
+.WorkoutsList{
+    height: 89.5vh;
+}
+
+.WorkoutsList .calendar {
+  margin: auto;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.WorkoutsList .rbc-event {
+    background-color: chocolate;
+    width: 85%;
+    margin: auto;
+    margin-top: 10px;
+    font-size: small;
+}
+
+.WorkoutsList .rbc-event-content {
+    white-space: normal;
+    color: white; 
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+}
+
+.rbc-time-column {
+    display: none;
+}
+
+
+

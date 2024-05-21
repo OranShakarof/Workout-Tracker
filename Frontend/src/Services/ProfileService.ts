@@ -1,7 +1,7 @@
 import axios from "axios";
 import ProfileModel from "../Models/ProfileModel";
-import appConfig from "../Utils/AppConfig";
 import { ProfileAction, ProfileActionType, profileStore } from "../Redux/ProfileState";
+import appConfig from "../Utils/AppConfig";
 
 class ProfileService{
     // Get Profile:
@@ -25,9 +25,23 @@ class ProfileService{
     }
 
     // Add Profile:
-    //  public async addProfile(profile: ProfileModel): Promise<void>{
+    public async addProfile(profile: ProfileModel): Promise<void>{
         
-    // }
+        // The additional image that send with the data.
+        const options = {
+            headers: { "Content-Type": "multipart/form-data" } // Include files in the request.
+        }
+
+        // Send Profile to backend: 
+        const response = await axios.post<ProfileModel>(appConfig.profileUrl, profile, options);
+
+        // Extract the added profile sent back from the backend:
+        const addedProfile = response.data;
+    
+        // Add the profile global state:
+        const action: ProfileAction = {type: ProfileActionType.AddProfile, payload: addedProfile };
+        profileStore.dispatch(action);    
+    }
 
     // Edit Profile:
     public async editProfile(profile: ProfileModel): Promise<void>{
@@ -47,6 +61,15 @@ class ProfileService{
         const action: ProfileAction = {type: ProfileActionType.EditProfile, payload: updatedProfile };
         profileStore.dispatch(action);
         
+    }
+
+    public async deleteProfile(_id: string) {
+        // Delete Profile in backend:
+        await axios.delete(appConfig.profileUrl + _id);
+
+        // Delete the profile from the global state:
+        const action: ProfileAction = { type: ProfileActionType.DeleteProfile, payload: _id };
+        profileStore.dispatch(action);
     }
 
 }

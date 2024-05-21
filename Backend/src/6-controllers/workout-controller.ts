@@ -21,6 +21,22 @@ router.get("/workouts/:userId([0-9a-f]{24})", async (request: Request, response:
     }
 });
 
+router.get("/workouts/details/:_id([0-9a-f]{24})", async (request: Request, response: Response, next: NextFunction) => {
+    try {
+        // Get route workout _id:
+        const _id = request.params._id;
+
+        // Get the workout by the user id:
+        const workouts = await workoutService.getOneWorkoutByUser(_id);
+
+        // Response back the desired workout:
+        response.json(workouts);
+    }
+    catch(err: any) {
+        next(err);
+    }
+});
+
 
 router.post("/workouts", async (request: Request, response: Response, next: NextFunction) => {
     try {

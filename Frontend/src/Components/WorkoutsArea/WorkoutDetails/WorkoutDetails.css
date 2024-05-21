@@ -1,0 +1,15 @@
+.WorkoutsCard .grid-style {
+    width: 40vh;
+    text-align: center;
+}
+
+.btn-style:hover {
+    color: black;
+}
+
+.table-navlinks {
+    margin-top: 15px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
